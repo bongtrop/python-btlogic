@@ -42,10 +42,10 @@ And set your API key:
 constructer methods
 ---------------
 
-The methods ``logicterm(<YOURTERM>, <"minterm"|"maxterm">, <BIT>)``,
+The methods ``logicterm(<YOURTERM>, <"minterm"|"maxterm">, <BIT>)``
 
 Example of create object from logicterm:
-    object = logicterm(<YOURTERM>, <"minterm"|"maxterm">, <BIT>)
+    >>> object = logicterm(<YOURTERM>, <"minterm"|"maxterm">, <BIT>)
 
 --------------------
 setTerm methods
