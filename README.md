@@ -1,6 +1,6 @@
-================
-python-logicterm
-================
+==============
+python-btlogic
+==============
 
 Python library for management logic minterm and maxterm.
 
