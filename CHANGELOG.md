@@ -1,6 +1,11 @@
 python-btlogic changelog
 ==========================
 
+0.3.0
+-----
+    * Add Quine–McCluskey algorithm in quine class
+    * fix but at getMaxtermByString
+
 0.2.1
 -----
     * fixes setup.py bug can't install

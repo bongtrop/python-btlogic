@@ -282,3 +282,24 @@ class quine:
 			
 			out = out+'+'
 		return out[:-1]
+		
+#Main
+####################Input###########################
+bit = raw_input("Enter the number of variables> ")
+sminterm = raw_input("Enter the set of minterms> ")
+bit = int(bit)
+sminterm = sminterm.split(',')
+minterm = []
+for m in sminterm:
+	minterm.append(int(m))
+####################################################
+
+####################Procress#########################
+objTerm = term(term=minterm, type="minterm", bit=bit)
+objQuine = quine(objterm=objTerm)
+result = objQuine.start()
+#####################################################
+
+#############################Output###################################
+print "\nOutput the function is > "+objQuine.getTermByAlphabet(result)
+######################################################################

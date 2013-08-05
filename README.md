@@ -2,7 +2,8 @@
 python-btlogic
 ==============
 
-Python library for management logic minterm and maxterm.
+Python library for management logic minterm and maxterm or
+can use Quine–McCluskey algorithm step 1.
 
 Written by Pongsakorn Sommalai <bongtrop@gmail.com>.
 
@@ -28,36 +29,41 @@ which will install the library into python's site-packages directory.
 Usage
 =====
 
-Import ``logicterm`` from ``btlogic``:
+Import ``term`` from ``btlogic`` and import ``quine`` from ``btlogic``:
     
-    >>> from btlogic import logicterm
+    >>> from btlogic import term
+	>>> from btlogic import quine
     
-And set your API key:
+And create object:
 
-    >>> object = logicterm(<YOURTERM>, <"minterm"|"maxterm">, <BIT>)
+    >>> objectTerm = term(term=<LIST YOURTERM>, type=<"minterm"|"maxterm">, bit=<BIT>)
+	>>> objectQuine = quine(objterm=<OBJECT TERM>)
+	>>> objectQuine = quine(minterm=<LIST MINTERM>, bit=<BIT>)
 
-**This have only logicterm
 
----------------
+term class
+==========
+
+-------------------
 constructer methods
----------------
+-------------------
 
-The methods ``logicterm(<YOURTERM>, <"minterm"|"maxterm">, <BIT>)``,
+The methods ``term(term=<LIST YOURTERM>, type=<"minterm"|"maxterm">, bit=<BIT>)``,
 
-Example of create object from logicterm:
+Example of create object from term:
 
-    object = logicterm(<YOURTERM>, <"minterm"|"maxterm">, <BIT>)
+    >>> objectTerm = term(term=[0,1], type="minterm" bit=2)
 
 --------------------
 setTerm methods
 --------------------
 
-``setTerm(<YOURTERM>, <"minterm"|"maxterm">, <BIT>)`` 
+``setTerm(term=<LIST YOURTERM>, type=<"minterm"|"maxterm">, bit=<BIT>)`` 
 set term, type and bit.
 
 Example of setting term:
 
-    >>> object.setTerm([0,1], "minterm", 4)
+    >>> object.setTerm(term=[0,1], type="minterm", bit=2)
 
 ------------------
 getMinterm methods
@@ -99,11 +105,11 @@ Example of getting string of minterm by [a-z]:
 getMaxtermByAlphabet methods
 -----------------
 
-``getMaxtermByString()`` returns a string of maxterm by [a-z].
+``getMaxtermByAlphabet()`` returns a string of maxterm by [a-z].
 
 Example of getting string of minterm by [a-z]:
 
-    >>> a = object.getMaxtermByString()
+    >>> a = object.getMaxtermByAlphabet()
 	>>> print a
 	(a'+b)(a'+b')
 	
@@ -115,7 +121,7 @@ getMintermByBinary methods
 
 Example of getting string of minterm by Binary:
 
-    >>> a = object.getMintermByString()
+    >>> a = object.getMintermByBinary()
 	>>> print a
 	['00', '01']
 
@@ -127,11 +133,12 @@ getMaxtermByBinary methods
 
 Example of getting string of minterm by Binary:
 
-    >>> a = object.getMaxtermByString()
+    >>> a = object.getMaxtermByBinary()
 	>>> print a
 	['10', '11']
 
 
+	
 ----------------
 opposite methods
 ----------------
@@ -144,3 +151,52 @@ Example of getting details on NC 2008 Gubernatorial election:
 	>>> object.getMinterm()
 	[2,3]
 
+quine class
+===========
+
+-------------------
+constructer methods
+-------------------
+
+The methods ``quine(objterm=<OBJECT TERM>)``
+
+Example of create object from quine:
+
+	>>> objectQuine = quine(objterm=objTerm)
+	>>> objectQuine = quine(minterm=[0,1], bit=2)
+
+--------------------
+setTerm methods
+--------------------
+
+The methods ``setTerm(objterm=<OBJECT TERM>)``
+
+Example of create object from quine:
+
+	>>> objectQuine = quine(objterm=objTerm)
+	>>> objectQuine = quine(minterm=[0,1], bit=2)
+	
+--------------------
+start methods
+--------------------
+
+The methods ``start()`` use for start use algorithm
+it return list of term
+
+Example of create object from quine:
+
+	>>> listTerm = objectQuine.start()
+	>>> print listTerm
+	['0-']
+	
+--------------------------
+getTermByAlphabet methods
+--------------------------
+
+The methods ``getTermByAlphabet(<listTerm>)`` use for start use algorithm
+it return list of term
+
+Example of create object from quine:
+
+	>>> print objectQuine.getTermByAlphabet(listTerm)
+	a'
